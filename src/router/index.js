@@ -3,12 +3,13 @@ import Liste from '../views/Listes/listeGet.vue'
 import creerUserVue from '@/views/Listes/creerUser.vue'
 import updateUserVue from '@/views/Listes/updateUser.vue'
 import showUserVue from '@/views/Listes/showUser.vue'
+import connexionVue from '@/views/connexion/connexion.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Liste',
       component: Liste
     },
@@ -28,6 +29,11 @@ const router = createRouter({
       name:'show',
       component:showUserVue,
       props:true
+    },
+    {
+      path:'/',
+      name: 'connexion',
+      component: connexionVue
     }
   ]
 })

@@ -37,17 +37,19 @@ export default {
                 name:'',
                 email:'',
                 password:'',
-                message:'',
+                message:[],
             }
         },
         
     methods:{
         
     fetchData (formData){
+      console.log(formData);
         axios.post('http://localhost:8000/api/user', formData)
         .then(response => {
           // Gérez la réponse du backend (redirection, affichage de messages, etc.)
-          console.log("bien jouer");
+          this.message=response.data;
+          console.log(this.message);
           router.push({name:'Liste'});
           
         })

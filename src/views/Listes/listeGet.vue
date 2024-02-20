@@ -5,6 +5,9 @@
     <div class="addUser">
       <button @click="ajouterUser" type="submit" class="btn btn-success" >ajouter</button>
     </div>
+    <div class="decon">
+      <button @click="deconnexion" type="submit" class="btn btn-success" >deconnection</button>
+    </div>
     <table class="table table-bordered">
       <thead>
     <tr>
@@ -48,6 +51,26 @@ export default {
     };
   },
   methods: {
+    deconnexion(){
+      // Exemple de déconnexion côté client avec Axios
+  axios.post('http://localhost:8000/api/logout')
+      .then(response => {
+        this.message = response.data;
+          // Gérer la réponse (peut-être afficher un message)
+          console.log(this.message);
+
+          // Supprimer le token côté client
+          localStorage.removeItem('token');
+
+          // Rediriger vers la page de connexion ou toute autre page appropriée
+          console.log('redirection vers conn');
+          router.push({ name: 'connexion' });
+      })
+      .catch(error => {
+          // Gérer les erreurs
+          console.error('Erreur lors de la déconnexion :', error);
+      });
+    },
     ajouterUser() {
       router.push({ name: 'creer' });
     },
@@ -90,9 +113,6 @@ export default {
 </script>
 
 <style>
- .butonn1{
-    align-content: center;
- }
  
 </style>
 

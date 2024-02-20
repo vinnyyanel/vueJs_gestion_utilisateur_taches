@@ -57,7 +57,7 @@ export default {
             axios.put(`http://localhost:8000/api/user/${userId}`,userUpdate)
                 .then( response => {
                     this.message = response.data;
-                    this.$router.push('/');
+                    this.$router.push('/home');
                 })
                 .catch( error=>{
                     console.error('erreur lors de la modification',error);
