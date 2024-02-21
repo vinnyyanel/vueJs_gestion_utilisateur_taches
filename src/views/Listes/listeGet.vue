@@ -18,6 +18,7 @@
       <th>modifier</th>
       <th>suprimer</th>
       <th>details</th>
+      <th>ajouter tache</th>
     </tr>
    </thead>
       <tbody>
@@ -33,6 +34,9 @@
           </td>
           <td>
             <button @click="details(user.id)" type="submit" class="btn btn-info" >details</button>
+          </td>
+          <td>
+            <button @click="ajoutertache(user.id)" type="submit" class="btn btn-info" >ajoutertache</button>
           </td>
         </tr>
       </tbody>
@@ -73,6 +77,9 @@ export default {
     },
     ajouterUser() {
       router.push({ name: 'creer' });
+    },
+    ajoutertache(userId){
+        router.push({ name: 'tache', params: { id: userId } });
     },
     modifier(userId) {
       router.push({ name: 'modifier', params: { id: userId } });

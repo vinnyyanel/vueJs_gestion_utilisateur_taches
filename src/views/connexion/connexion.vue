@@ -31,24 +31,25 @@ export default {
         return {
             name:'',
             password:'',
-            message:''
+            message:'',
+            user:[]
         }
     },
     methods:{
         verification(){
-            console.log('veri reussie');
             const formData ={
                 name:this.name,
             password:this.password
             };
-            console.log(formData);
         axios.post(`http://localhost:8000/api/login`, formData)
         .then(response => {
           // Gérez la réponse du backend (redirection, affichage de messages, etc.)
         this.message = response.data;
-          console.log(this.message);
-          localStorage.setItem('token',this.message);
-          router.push({name:'Liste'});
+        const token = this.message.token;
+        const user = this.message.user;
+
+          localStorage.setItem('token',token);
+          router.push({name:'dashboard',params:{id:user.id}});
           
         })
         .catch(error => {

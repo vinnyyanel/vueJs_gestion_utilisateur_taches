@@ -45,13 +45,14 @@ export default {
         
     fetchData (formData){
       console.log(formData);
+      
         axios.post('http://localhost:8000/api/user', formData)
         .then(response => {
           // Gérez la réponse du backend (redirection, affichage de messages, etc.)
           this.message=response.data;
-          console.log(this.message);
-          router.push({name:'Liste'});
           
+          router.push({name:'connexion'});
+          console.log(this.message);
         })
         .catch(error => {
           // Gérez les erreurs, par exemple, afficher un message à l'utilisateur
@@ -65,7 +66,6 @@ export default {
             email:this.email,
             password:this.password,
         }
-        console.log('submit form');
         console.log(this.name);
         this.fetchData(formData);
         
