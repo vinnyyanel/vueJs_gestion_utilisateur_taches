@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="conn">
+    <h2>Inscription</h2>
+  </div>
     <div class="form">
     <form  @submit.prevent="SubmitForm">
   <div class="row mb-3">
@@ -20,7 +23,9 @@
       <input type="password" v-model="password" class="form-control" id="inputPassword3">
     </div>
   </div>
-  <button type="submit" class="btn btn-info">s'inscrire</button>
+  <div class="conn">
+    <button type="submit" class="btn btn-info">s'inscrire</button>
+  </div>
 </form>
 </div>
   </div>

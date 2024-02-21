@@ -7,7 +7,7 @@
       <button @click="ajoutertache(this.id)" type="submit" class="btn btn-success" >ajouter</button>
     </div>
     <div class="decon">
-      <button @click="deconnexion" type="submit" class="btn btn-success" >deconnection</button>
+      <button @click="deconnexion" type="submit" class="btn btn-success" >deconnexion</button>
     </div>
     <table class="table table-bordered">
       <thead>
@@ -53,6 +53,26 @@ export default {
         };
     },
     methods:{
+      deconnexion(){
+      //  déconnexion côté client avec Axios
+       axios.post('http://localhost:8000/api/logout')
+      .then(response => {
+        this.message = response.data;
+          // Gérer la réponse (peut-être afficher un message)
+          console.log(this.message);
+
+          // Supprimer le token côté client
+          localStorage.removeItem('token');
+
+          // Rediriger vers la page de connexion ou toute autre page appropriée
+          console.log('redirection vers conn');
+          router.push({ name: 'connexion' });
+      })
+      .catch(error => {
+          // Gérer les erreurs
+          console.error('Erreur lors de la déconnexion :', error);
+      });
+    },
         ajoutertache(userId){
         router.push({ name: 'tache', params: { id: userId } });
     },

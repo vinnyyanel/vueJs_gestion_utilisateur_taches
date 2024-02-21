@@ -1,6 +1,17 @@
 <template>
     
   <div class="container">
+    <div class="head">
+    <div class="headChild">
+      <h3>connectez-vous</h3>
+    </div>
+    <div class="headChild">
+      <p>ou</p>
+    </div>
+  <div class="headChild">
+    <button type="submit" @click="inscription" class="btn btn-info">s'inscrire</button>
+  </div>
+    </div>
     <div class="form">
     <form  @submit.prevent="verification">
   <div class="row mb-3">
@@ -36,6 +47,9 @@ export default {
         }
     },
     methods:{
+        inscription(){
+          router.push({name:'creer'});
+        },
         verification(){
             const formData ={
                 name:this.name,
@@ -65,5 +79,12 @@ export default {
 <style>
 .conn{
     margin-left: 50%;
+}
+.head{
+  text-align: center;
+}
+.headChild{
+  display: inline-block;
+  margin: 10px;
 }
 </style>
